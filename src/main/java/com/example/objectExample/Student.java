@@ -23,4 +23,12 @@ public class Student {
         this.name = name;
         this.surname = surname;
     }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                '}';
+    }
 }

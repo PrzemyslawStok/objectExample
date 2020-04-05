@@ -2,10 +2,9 @@ package com.example.objectExample;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @Controller
 public class nextController {
@@ -13,8 +12,8 @@ public class nextController {
 
     @RequestMapping("student/{id}")
     @ResponseBody
-    Student getStudent(){
-        return new Student("Przemysław","Stokłosa");
+    Optional<Student> getStudent(@PathVariable("id") Integer id){
+        return repository.findById(id);
     }
 
     @RequestMapping("addStudent")
@@ -23,7 +22,7 @@ public class nextController {
         Student student = new Student(name,surname);
         repository.save(student);
 
-        return "Zapisano studenta";
+        return "Zapisano: "+student;
     }
 
     @RequestMapping("students")
