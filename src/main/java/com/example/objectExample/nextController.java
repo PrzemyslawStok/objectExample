@@ -15,4 +15,13 @@ public class nextController {
     Student getStudent(){
         return new Student("Przemysław","Stokłosa");
     }
+
+    @RequestMapping("addStudent")
+    @ResponseBody
+    String addStudent(){
+        Student student = new Student("Przemysław","Stokłosa");
+        repository.save(student);
+
+        return "Zapisano studenta";
+    }
 }
