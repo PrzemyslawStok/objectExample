@@ -24,4 +24,10 @@ public class nextController {
 
         return "Zapisano studenta";
     }
+
+    @RequestMapping("students")
+    @ResponseBody
+    Iterable<Student> getStudents(){
+        return repository.findAll();
+    }
 }
